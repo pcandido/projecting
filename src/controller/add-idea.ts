@@ -2,20 +2,14 @@ export class AddIdeaController {
 
   handle(request: any): any {
 
-    if (!request.repository && !request.title && !request.description) {
-      return { statusCode: 400, body: 'Missing param: repository, title, description' }
-    }
+    const requiredParams = ['repository', 'title', 'description']
+    const missingParams = requiredParams.filter(a => !request[a])
 
-    if (!request.repository) {
-      return { statusCode: 400, body: 'Missing param: repository' }
-    }
-
-    if (!request.title) {
-      return { statusCode: 400, body: 'Missing param: title' }
-    }
-
-    if (!request.description) {
-      return { statusCode: 400, body: 'Missing param: description' }
+    if (missingParams.length) {
+      return {
+        statusCode: 400,
+        body: `Missing param: ${missingParams.join(', ')}`,
+      }
     }
 
     return { statusCode: 200 }
