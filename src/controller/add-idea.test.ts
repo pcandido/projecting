@@ -8,6 +8,8 @@ describe('AddIdeaController', () => {
     ['description', { repository: 'link', title: 'title' }],
     ['repository, title', { description: 'description' }],
     ['repository, title, description', {}],
+    ['title, description', { repository: 'link' }],
+    ['repository, description', { title: 'title' }],
   ])('should return 400 if no %s is provided', (expectedMissingParams, givenBody) => {
     const response = sut().handle(givenBody)
     expect(response.statusCode).toBe(400)
