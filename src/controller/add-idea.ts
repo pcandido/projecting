@@ -1,4 +1,10 @@
+import { AddIdeaUseCase } from '../usecase/add-idea-usecase'
+
 export class AddIdeaController {
+
+  constructor(
+    private addIdeaUseCase: AddIdeaUseCase,
+  ) { }
 
   handle(request: any): any {
 
@@ -11,6 +17,8 @@ export class AddIdeaController {
         body: `Missing param: ${missingParams.join(', ')}`,
       }
     }
+
+    this.addIdeaUseCase.addIdea(request)
 
     return { statusCode: 200 }
   }
