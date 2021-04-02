@@ -1,9 +1,10 @@
 import { AddIdeaController } from './add-idea-controller'
 import { AddIdeaUseCase } from '../usecase/add-idea-usecase'
+import AddIdeaRequest from '../interface/add-ideia-request-interface'
 
 const makeAddIdeaUseCaseStub = () => {
   class AddIdeaUseCaseStub extends AddIdeaUseCase {
-    addIdea(addIdeaRequest: any): any {
+    addIdea(addIdeaRequest: AddIdeaRequest): any {
       return {}
     }
   }
