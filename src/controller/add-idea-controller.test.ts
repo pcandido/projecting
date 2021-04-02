@@ -1,4 +1,4 @@
-import { AddIdeaController } from './add-idea'
+import { AddIdeaController } from './add-idea-controller'
 import { AddIdeaUseCase } from '../usecase/add-idea-usecase'
 
 const makeAddIdeaUseCaseStub = () => {
