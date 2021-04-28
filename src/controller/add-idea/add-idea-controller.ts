@@ -1,4 +1,4 @@
-import { AddIdeaUseCase } from '../usecase/add-idea-usecase'
+import { AddIdeaUseCase } from 'src/usecase/add-idea-usecase'
 
 export class AddIdeaController {
 

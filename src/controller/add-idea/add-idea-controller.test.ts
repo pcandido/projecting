@@ -1,5 +1,5 @@
 import { AddIdeaController } from './add-idea-controller'
-import { AddIdeaRequest, AddIdeaUseCase } from '../usecase/add-idea-usecase'
+import { AddIdeaRequest, AddIdeaUseCase } from '../../usecase/add-idea-usecase'
 
 const makeAddIdeaUseCaseStub = () => {
   class AddIdeaUseCaseStub extends AddIdeaUseCase {
