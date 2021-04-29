@@ -1,13 +1,13 @@
 import { GitHubValidator } from './github-validator'
 
-const makeSut = () => new GitHubValidator()
+const makeSut = (url: string) => new GitHubValidator(url)
 
 describe('GitHubValidator', () => {
 
   it('should return false if url is empty', async () => {
-    const sut = makeSut()
     const givenUrl = ''
-    const result = sut.validate(givenUrl)
+    const sut = makeSut(givenUrl)
+    const result = sut.validate()
     expect(result).toBeFalsy()
   })
 
@@ -19,15 +19,15 @@ describe('GitHubValidator', () => {
     'https://github.com',
     'https://github.com/pcandido',
   ])('should return false for "%s" since it does not match an GitHub url', async givenUrl => {
-    const sut = makeSut()
-    const result = sut.validate(givenUrl)
+    const sut = makeSut(givenUrl)
+    const result = sut.validate()
     expect(result).toBeFalsy()
   })
 
   it('should return true if url is valid', async () => {
-    const sut = makeSut()
     const givenValidUrl = 'https://github.com/pcandido/projecting'
-    const result = sut.validate(givenValidUrl)
+    const sut = makeSut(givenValidUrl)
+    const result = sut.validate()
     expect(result).toBeTruthy()
   })
 
