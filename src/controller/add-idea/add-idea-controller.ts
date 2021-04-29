@@ -21,7 +21,9 @@ export class AddIdeaController {
     }
 
     const repositoryValidator = this.repositoryValidatorFactory.make(request.repository)
-    repositoryValidator.validate()
+    if (!repositoryValidator.validate()) {
+      return { statusCode: 400 }
+    }
 
     this.addIdeaUseCase.addIdea(request)
 
