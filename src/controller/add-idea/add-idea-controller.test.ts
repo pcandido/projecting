@@ -65,6 +65,13 @@ describe('AddIdeaController', () => {
     expect(makeSpy).toBeCalledWith('link')
   })
 
+  it('should call RepositoryValidator.validate', async () => {
+    const { sut, repositoryValidatorStub } = makeSut()
+    const validateSpy = jest.spyOn(repositoryValidatorStub, 'validate')
+    sut.handle({ repository: 'link', title: 'idea', description: 'short text' })
+    expect(validateSpy).toBeCalled()
+  })
+
 
   it('should call AddIdeaUseCase with correct params', async () => {
     const givenBody = {
