@@ -21,8 +21,7 @@ export class AddIdeaController {
     }
 
     const repositoryValidator = this.repositoryValidatorFactory.make(request.repository)
-
-
+    repositoryValidator.validate()
 
     this.addIdeaUseCase.addIdea(request)
 
