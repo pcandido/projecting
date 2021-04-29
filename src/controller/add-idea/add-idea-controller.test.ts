@@ -72,6 +72,12 @@ describe('AddIdeaController', () => {
     expect(validateSpy).toBeCalled()
   })
 
+  it('should return 400 if RepositoryValidator returns false', async () => {
+    const { sut, repositoryValidatorStub } = makeSut()
+    jest.spyOn(repositoryValidatorStub, 'validate').mockReturnValueOnce(false)
+    const response = sut.handle({ repository: 'link', title: 'idea', description: 'short text' })
+    expect(response.statusCode).toBe(400)
+  })
 
   it('should call AddIdeaUseCase with correct params', async () => {
     const givenBody = {
