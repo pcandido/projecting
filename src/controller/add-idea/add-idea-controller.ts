@@ -1,9 +1,11 @@
 import { AddIdeaUseCase } from 'src/usecase/add-idea-usecase'
+import { RepositoryValidatorFactory } from './repository-validator/repository-validator-factory'
 
 export class AddIdeaController {
 
   constructor(
     private addIdeaUseCase: AddIdeaUseCase,
+    private repositoryValidatorFactory: RepositoryValidatorFactory,
   ) { }
 
   handle(request: any): any {
@@ -17,6 +19,10 @@ export class AddIdeaController {
         body: `Missing param: ${missingParams.join(', ')}`,
       }
     }
+
+    const repositoryValidator = this.repositoryValidatorFactory.make(request.repository)
+
+
 
     this.addIdeaUseCase.addIdea(request)
 
